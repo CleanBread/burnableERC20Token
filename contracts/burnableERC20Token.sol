@@ -4,23 +4,32 @@ import "./IERC20.sol";
 import "./ownable.sol";
 
 contract BurnableERC20Token is Ownable, ERC20 {
-  struct TokenSummary {
-    string name;
-    string symbol;
-  }
+  string private name;
+  string private symbol;
 
-  TokenSummary public tokenSummary;
   uint256 internal _totalSupply;
 
   mapping (address => uint256) internal balances;
   mapping (address => mapping (address => uint256)) internal allowed;
 
-  constructor(string memory _name, string memory _symbol, uint256 initialBalance) {
-    tokenSummary = TokenSummary(_name, _symbol);
+  constructor(string memory name_, string memory symbol_, uint256 initialBalance) {
+    name = name_;
+    symbol = symbol_;
     balances[msg.sender] = initialBalance;
     _totalSupply = initialBalance;
   }
 
+  function _name() public view returns(string memory) {
+    return name;
+  }
+
+  function _symbol() public view returns(string memory) {
+    return symbol;
+  }
+
+  function _decimals() public pure returns(uint8) {
+    return 18;
+  }
 
   function transfer(address to, uint256 value) external returns (bool) {
     require(to != address(0) && balances[msg.sender] >= value);
