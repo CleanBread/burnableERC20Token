@@ -3,7 +3,7 @@ pragma solidity >=0.8.0;
 import "./IERC20.sol";
 import "./ownable.sol";
 
-contract BurnableERC20Token is Ownable, ERC20 {
+contract BurnableERC20Token is Ownable, IERC20 {
   string private name;
   string private symbol;
 
