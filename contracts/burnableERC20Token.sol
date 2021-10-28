@@ -1,6 +1,6 @@
 pragma solidity >=0.8.0;
 
-import "./ERC20.sol";
+import "./IERC20.sol";
 import "./ownable.sol";
 
 contract BurnableERC20Token is Ownable, ERC20 {
@@ -58,12 +58,11 @@ contract BurnableERC20Token is Ownable, ERC20 {
     return allowed[owner][spender];
   }
 
-  function mint(address to, uint256 value) external onlyOwner returns (bool) {
+  function mint(address to, uint256 value) external onlyOwner{
     require(to != address(0));
     _totalSupply = _totalSupply + value;
     balances[to] = balances[to] + value;
     emit Transfer(address(0), to, value);
-    return true;
   }
 
   function burn(uint256 value) external returns (bool) {
