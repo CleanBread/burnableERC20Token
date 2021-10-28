@@ -1,0 +1,13 @@
+{
+  "name": "burnable_erc20_token",
+  "version": "1.0.0",
+  "description": "burnable ERC20 token",
+  "main": "index.js",
+  "author": "Gleb Chistyakov <gleb4ist@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ganache-cli": "^6.12.2",
+    "solc": "^0.8.9",
+    "truffle": "^5.4.16"
+  }
+}
